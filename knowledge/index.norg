@@ -12,6 +12,9 @@ version: 1.1.1
 ** {:python:}[python]
 ** Make
 
+* Hardware
+** {:hardware/espressif:}[Espressif]
+
 * Management
 ** Design decision
    Check pugh matrix, weighed decision matrix
