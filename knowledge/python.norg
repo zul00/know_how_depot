@@ -1,0 +1,43 @@
+@document.meta
+title: python
+description: 
+authors: zulkarnaen
+categories: 
+created: 2024-01-10T09:36:40+0400
+updated: 2024-01-10T09:36:40+0400
+version: 1.1.1
+@end
+
+* Python environment
+** python-is-python3
+   - This `python-is-python3` package from Ubuntu 22.04 ensure that python3 is symlink-ed to python
+   - Ubuntu 22.04 does not have python2 anymore!
+
+** Pyton venv
+*** Create
+    @code bash
+    python3 -m venv ~/venv/an_environment
+    @end
+
+*** Activate
+    @code bash
+    source ~/venv/an_environment/activate
+    @end
+
+*** Deactivate
+    @code bash
+    deactivate
+    @end
+
+** Setup
+*** Install
+    @code bash
+    pip install -e .
+    @end
+*** Configuration
+    ~ Old way is to use `setup.py`
+    ~~ 2019 method
+    ~~ see {https://godatadriven.com/blog/a-practical-guide-to-using-setup-py/}[article]
+    ~ New way is to use `pythonproject.toml`
+    ~~ 2022 method
+    ~~ see {https://godatadriven.com/blog/a-practical-guide-to-setuptools-and-pyproject-toml/}[article].

@@ -1,0 +1,19 @@
+@document.meta
+title: index
+description: 
+authors: zulkarnaen
+categories: 
+created: 2024-01-10T09:33:27+0400
+updated: 2024-01-10T09:33:27+0400
+version: 1.1.1
+@end
+
+* Programming
+** {:python:}[python]
+** Make
+
+* Management
+** Design decision
+   Check pugh matrix, weighed decision matrix
+   - {https://en.wikipedia.org/wiki/Decision-matrix_method}[wiki]
+   - {https://www.weighteddecision.com/what-is-a-weighted-decision-matrix/}[link]
