@@ -1,0 +1,73 @@
+@document.meta
+title: rsync
+description: 
+authors: zulkarnaen
+categories: 
+created: 2024-01-13T09:42:18+0400
+updated: 2024-01-30T09:05:21+0400
+version: 1.1.1
+@end
+
+* Incremental backup
+
+** Backup
+  @code bash
+  sudo rsync -aAXv --delete --dry-run --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude=".cache" --exclude="Downloads" --exclude=".VirtualBoxVMs" --exclude=".ecryptfs" /source /destination
+  # -a, --archive, archive mode
+  # -A, --acls,    preserve Access Control List
+  # -X, --xattrs,  preserve extended attributes
+  @end
+
+** Backup with exclusion list coming from a file
+   @code bash
+   sudo rsync -aAXv --delete --exclude-form='<path/to/list/file>' /source /destination
+   @end
+
+   content of the exclusion file can be
+   @code
+   /dev/*
+   /proc/*
+   /sys/*
+   /tmp/*
+   /run/*
+   /mnt/*
+   /media/*
+   /var/cache/rsnapshot/*
+   "swapfile"
+   "lost+found"
+   ".cache"
+   "Downloads"
+   ".VirtualBoxVMs"
+   ".ecryptfs"
+   @end
+
+** Incremental backup
+   @code bash
+   sudo rsync -aAXv --delete --exclude-form='<path/to/list/file>' /source /dest1 --link-dest=/dest0
+   @end
+
+
+** Restore
+
+   @code bash
+   sudo rsync -aAXv --delete --exclude="lost+found" /backup /system
+   @end
+
+* Rsync snapshot
+  {http://www.mikerubel.org/computers/rsync_snapshots/}[nice article]
+
+* Or... use rsnapshot!
+  {https://github.com/rsnapshot/rsnapshot}[github project]
+
+  - Check config at
+    `/etc/rsnapshot.conf`
+
+  -- Important part:
+  --- snapshot_root
+  --- backup
+  -- exclude_file
+
+** Restore rsnapshot
+   @code bash
+    sudo rsync -aAXv --delete --exclude-from=rsync_exclude_list  /var/cache/rsnapshot/alpha.0/localhost/ /
+   @end

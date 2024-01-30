@@ -4,16 +4,65 @@ description:
 authors: zulkarnaen
 categories: 
 created: 2024-01-10T09:33:27+0400
-updated: 2024-01-10T09:33:27+0400
+updated: 2024-01-30T09:05:17+0400
 version: 1.1.1
 @end
+
+* TODO
+  - ( ) Investigate {https://modm.io/}[modm] project
+  - ( ) Investigate embedded-debug-tools from Auterion
+  -- {https://www.youtube.com/watch?v=1c4TqEn3MZ0}[px4]
+  -- Check orbcode and orbtrace
+  -- ( ) Investigate arm-gdb
+  -- ( ) Investigate arm-rs
+  -- ( ) Investigate Perfetto UI {https://www.ui.perfetto.dev/}[link]
+  -- ( ) Check ORBTrace
+  - ( ) Play with NuttX
+  - ( ) Play with Zephyr
+  - ( ) Play with FreeRTOS
+
+* Software
+** KVM/QEMU
+   - Use Virt-Manager
+   -- Based on KVM/QEMU
+   - Start the virt-manager
+   - Use snaphot!
+   - Use USB redirect
+   - Get windows key from
+   @code bash
+    sudo strings /sys/firmware/acpi/tables/MSDM
+   @end
+*** Installing windows
+    - Download ISO
+    - Start installation
+    - Choose I don't have product key
+    -- If it works it should have used the key from BIOS.
+*** Enable shared clipboard
+    ref: {https://dausruddin.com/how-to-enable-clipboard-and-folder-sharing-in-qemu-kvm-on-windows-guest/}[link]
+    ~ Install spice-guest-tool from the following {https://www.spice-space.org/download.html}[link]
+    ~ That's it!
+*** Enable shared folder
+    Ref: {https://www.debugpoint.com/share-folder-virt-manager/}[link]
+    ~ Install WinFSP from the github release page. {https://github.com/winfsp/winfsp/releases}[link]
+    ~ Install the core one
+    ~ Pause device
+    ~ Hardware options
+    ~ Enabled shared memory
+    ~ Add Filesystem virtiofs
+    ~ Reboot
+    ~ Download virtio-win-gest-tools.exe {https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/}[link]
+
+
 
 * Programming
 ** {:python:}[python]
 ** Make
+** {:rsync:}[rsync]
 
 * Hardware
 ** {:hardware/espressif:}[Espressif]
+** {:hardware/e-ink:}[E-Ink]
+
 
 * Management
 ** Design decision

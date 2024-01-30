@@ -1,0 +1,44 @@
+@document.meta
+title: e-ink
+description: 
+authors: zulkarnaen
+categories: 
+created: 2024-01-13T21:17:04+0400
+updated: 2024-01-30T09:05:25+0400
+version: 1.1.1
+@end
+
+
+Follow this wiki from waveshare
+https://www.waveshare.com/wiki/2.13inch_e-Paper_HAT_Manual
+
+~ Install gpiozero/lg
+~~ wget https://github.com/joan2937/lg/archive/master.zip
+~~ ...
+~~ make && sudo make install
+~ Install gpiod lib
+~~ sudo apt install gpiod libgpiod-dev
+~ Install BCM2835
+~~ wget http://www.airspayce.com/mikem/bcm2835/bcm2835-1.71.tar.gz
+~~ ...
+~~ ./configure && make && sudo make check && sudo make install
+~ Clone the demo e-Paper demo
+~~ git clone https://github.com/waveshare/e-Paper.git
+~~ ...
+~~ make -j4 EPD=epd2in13V4
+~~ ./epd
+ 
+Convert image to the e-ink format using following this tutorial
+{https://learn.adafruit.com/preparing-graphics-for-e-ink-displays/command-line}[adafruit page]
+
+@code bash
+convert input.jpg -dither FloydSteinberg -define dither:diffusion-amount=85% -remap eink-3color.png BMP3:output.bmp
+@end
+
+@code bash
+convert input.jpg -dither FloydSteinberg -define dither:diffusion-amount=85% -remap eink-4color.png BMP3:output.bmp
+@end
+
+@code bash
+convert input.jpg -dither FloydSteinberg -define dither:diffusion-amount=85% -remap eink-3color.png -compress RLE BMP3:output.bmp
+@end
